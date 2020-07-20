@@ -21,20 +21,20 @@ namespace Gym2.Controllers
 
             //citire din bd
 
-            var list = Db.Clienti.Where(x => x.IdSala == idSala).ToList();
+            var list = Db.Clienti.Where(x => x.IdSala == idSala).ToList();  
 
             //select * from Client
-            foreach(var itemDb in list)
-            {
-                model.ClientItems.Add(new ClientiIndexModel.ClientItem()
-                {
-                    Nume = itemDb.Nume,
-                    Prenume=itemDb.Prenume,
-                    IdClient=itemDb.IdClient,
-                    IdSala=itemDb.IdSala,
-                    IdUtilizator=itemDb.IdUtilizator
-                });
-            }
+            //foreach(var itemDb in list)
+            //{
+            //    model.ClientItems.Add(new ClientiIndexModel.ClientItem()
+            //    {
+            //        Nume = itemDb.Nume,
+            //        Prenume=itemDb.Prenume,
+            //        IdClient=itemDb.Id,
+            //        IdSala=itemDb.IdSala,
+            //        IdUtilizator=itemDb.IdUtilizator
+            //    });
+            //}
 
             model.ClientItems.Add(new ClientiIndexModel.ClientItem()
             {
