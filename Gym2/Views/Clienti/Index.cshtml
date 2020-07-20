@@ -1,0 +1,37 @@
+﻿@model  Gym2.Models.ClientiIndexModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+Lista de clienti
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">IdClient</th>
+                <th scope="col">Nume</th>
+                <th scope="col">Prenume</th>
+                <th scope="col">IdUtilizator</th>
+                <th scope="col">IdSala</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                @foreach (var item in Model.ClientItems)
+                {<tr>
+    <th scope="row">@item.IdClient</th>
+    <td>@item.Nume</td>
+    <td>@item.Prenume</td>
+    <td>@item.IdUtilizator</td>
+    <td > @item.IdSala</td>
+</tr>
+                }
+            
+        </tbody>
+    </table>
+
