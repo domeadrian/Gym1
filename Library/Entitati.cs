@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-
+     
     [Table("dbo.Client")]
     public class Client
     {
