@@ -281,9 +281,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52066</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8001</IISUrl>
+          <IISUrl>http://localhost:8092</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost:8001</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost:8092</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
