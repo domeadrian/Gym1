@@ -24,12 +24,20 @@ namespace Library
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime DataCreare { get; set; }
 
+        IList<Abonament> _abonamentList = null;
+        public virtual IList<Abonament> AbonamentList
+        {
+            get { return _abonamentList ?? (_abonamentList = new List<Abonament>()); }
+            private set { _abonamentList = value; }
+        }
 
     }
 
     [Table("dbo.Angajat")]
     public partial class Angajat
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdAngajat { get; set; }
         public int Salariu { get; set; }
         public System.DateTime DataAngajare { get; set; }
@@ -40,6 +48,8 @@ namespace Library
     [Table("dbo.Abonament")]
     public partial class Abonament
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdAbonament { get; set; }
         public int IdClient { get; set; }
         public string TipAbonament { get; set; }
@@ -55,6 +65,8 @@ namespace Library
     [Table("dbo.Sala")]
     public partial class Sala
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdSala { get; set; }
         public string AdresaSala { get; set; }
         public System.TimeSpan OraDeschidere { get; set; }
@@ -64,6 +76,7 @@ namespace Library
     [Table("Nomenclator.TipAngajat")]
     public partial class TipAngajat
     {
+        [Key]
         public int Id { get; set; }
         public string Nume { get; set; }
     }
@@ -71,6 +84,8 @@ namespace Library
     [Table("dbo.Review")]
     public partial class Review
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdReview { get; set; }
         public int IdUtilizator { get; set; }
         public string Comentariu { get; set; }
