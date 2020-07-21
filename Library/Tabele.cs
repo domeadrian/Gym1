@@ -9,6 +9,11 @@ namespace Library
 {
     public partial class Database
     {
-        public DbSet<Client> Clienti { get; set; }
+        public DbSet<Client> ClientList { get; set; }
+        public DbSet<Angajat> AngajatList { get; set; }
+        public DbSet<Abonament> AbonamentList { get; set; }
+        public DbSet<TipAngajat> TipAngajatList { get; set; }
+        public DbSet<Review> ReviewList { get; set; }
+        public DbSet<Sala> SalaList { get; set; }
     }
 }
