@@ -1,4 +1,5 @@
 ﻿using Gym2.Models;
+using Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,20 @@ namespace Gym2.Controllers
 
             //citire din bd
 
-            var list = Db.ClientList.Where(x => x.IdSala == idSala).ToList();
+            //var list = Db.ClientList.ToList();
+            //var client = new Client()
+            //{
+            //    Nume = "Test",
+            //    Prenume = "Alia",
+            //    Id = 2,
+            //    //DataCreare = new DateTime(2020,01,01),
+            //    IdSala = 1,
+            //    Sters = false,
+            //    IdUtilizator=2
+            //}
+            //;
+            //Db.MarkAsAdded(client);
+            //Db.SaveChanges();
 
             //select * from Client
             //foreach(var itemDb in list)

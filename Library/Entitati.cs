@@ -19,10 +19,10 @@ namespace Library
         public string Prenume { get; set; }
 
         public int IdSala { get; set; }
-        public int IdUtilizator { get; set; }
+        public int? IdUtilizator { get; set; }
         public bool Sters { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime DataCreare { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public DateTime DataCreare { get; set; }
 
         IList<Abonament> _abonamentList = null;
         public virtual IList<Abonament> AbonamentList
