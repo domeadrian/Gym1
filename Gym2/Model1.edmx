@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GymModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Abonament">
+          <Key>
+            <PropertyRef Name="IdAbonament" />
+          </Key>
+          <Property Name="IdAbonament" Type="int" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="TipAbonament" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pret" Type="int" Nullable="false" />
+          <Property Name="DataInceput" Type="date" Nullable="false" />
+          <Property Name="DataFinalizare" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Angajat">
+          <Key>
+            <PropertyRef Name="IdAngajat" />
+          </Key>
+          <Property Name="IdAngajat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Salariu" Type="int" Nullable="false" />
+          <Property Name="DataAngajare" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdUtilizator" Type="varchar" MaxLength="36" />
+          <Property Name="Nume" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenume" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdSala" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="IdReview" />
+          </Key>
+          <Property Name="IdReview" Type="int" Nullable="false" />
+          <Property Name="IdUtilizator" Type="int" Nullable="false" />
+          <Property Name="Comentariu" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="IdSala" />
+          </Key>
+          <Property Name="IdSala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdresaSala" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OraDeschidere" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OraInchidere" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipAngajat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nume" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__Abonament__IdCli__300424B4">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Abonament" Type="Self.Abonament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Abonament">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GymModelStoreContainer">
+          <EntitySet Name="Abonament" EntityType="Self.Abonament" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Angajat" EntityType="Self.Angajat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sala" EntityType="Self.Sala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipAngajat" EntityType="Self.TipAngajat" Schema="Nomenclator" store:Type="Tables" />
+          <AssociationSet Name="FK__Abonament__IdCli__300424B4" Association="Self.FK__Abonament__IdCli__300424B4">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Abonament" EntitySet="Abonament" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GymModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Abonament">
+          <Key>
+            <PropertyRef Name="IdAbonament" />
+          </Key>
+          <Property Name="IdAbonament" Type="Int32" Nullable="false" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="TipAbonament" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pret" Type="Int32" Nullable="false" />
+          <Property Name="DataInceput" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataFinalizare" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Abonament__IdCli__300424B4" FromRole="Abonament" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Angajat">
+          <Key>
+            <PropertyRef Name="IdAngajat" />
+          </Key>
+          <Property Name="IdAngajat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salariu" Type="Int32" Nullable="false" />
+          <Property Name="DataAngajare" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdUtilizator" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdSala" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Abonaments" Relationship="Self.FK__Abonament__IdCli__300424B4" FromRole="Client" ToRole="Abonament" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="IdReview" />
+          </Key>
+          <Property Name="IdReview" Type="Int32" Nullable="false" />
+          <Property Name="IdUtilizator" Type="Int32" Nullable="false" />
+          <Property Name="Comentariu" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="IdSala" />
+          </Key>
+          <Property Name="IdSala" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdresaSala" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OraDeschidere" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OraInchidere" Type="Time" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="TipAngajat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nume" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Abonament__IdCli__300424B4">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Abonament" Type="Self.Abonament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Abonament">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GymEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Abonaments" EntityType="Self.Abonament" />
+          <EntitySet Name="Angajats" EntityType="Self.Angajat" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Reviews" EntityType="Self.Review" />
+          <EntitySet Name="Salas" EntityType="Self.Sala" />
+          <EntitySet Name="TipAngajats" EntityType="Self.TipAngajat" />
+          <AssociationSet Name="FK__Abonament__IdCli__300424B4" Association="Self.FK__Abonament__IdCli__300424B4">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Abonament" EntitySet="Abonaments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GymModelStoreContainer" CdmEntityContainer="GymEntities">
+          <EntitySetMapping Name="Abonaments">
+            <EntityTypeMapping TypeName="GymModel.Abonament">
+              <MappingFragment StoreEntitySet="Abonament">
+                <ScalarProperty Name="IdAbonament" ColumnName="IdAbonament" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="TipAbonament" ColumnName="TipAbonament" />
+                <ScalarProperty Name="Pret" ColumnName="Pret" />
+                <ScalarProperty Name="DataInceput" ColumnName="DataInceput" />
+                <ScalarProperty Name="DataFinalizare" ColumnName="DataFinalizare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Angajats">
+            <EntityTypeMapping TypeName="GymModel.Angajat">
+              <MappingFragment StoreEntitySet="Angajat">
+                <ScalarProperty Name="IdAngajat" ColumnName="IdAngajat" />
+                <ScalarProperty Name="Salariu" ColumnName="Salariu" />
+                <ScalarProperty Name="DataAngajare" ColumnName="DataAngajare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="GymModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdUtilizator" ColumnName="IdUtilizator" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="IdSala" ColumnName="IdSala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="GymModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="IdReview" ColumnName="IdReview" />
+                <ScalarProperty Name="IdUtilizator" ColumnName="IdUtilizator" />
+                <ScalarProperty Name="Comentariu" ColumnName="Comentariu" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salas">
+            <EntityTypeMapping TypeName="GymModel.Sala">
+              <MappingFragment StoreEntitySet="Sala">
+                <ScalarProperty Name="IdSala" ColumnName="IdSala" />
+                <ScalarProperty Name="AdresaSala" ColumnName="AdresaSala" />
+                <ScalarProperty Name="OraDeschidere" ColumnName="OraDeschidere" />
+                <ScalarProperty Name="OraInchidere" ColumnName="OraInchidere" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipAngajats">
+            <EntityTypeMapping TypeName="GymModel.TipAngajat">
+              <MappingFragment StoreEntitySet="TipAngajat">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
