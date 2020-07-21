@@ -21,7 +21,7 @@ namespace Gym2.Controllers
 
             //citire din bd
 
-            var list = Db.ClientList.Where(x => x.IdSala == idSala).ToList();  
+            var list = Db.ClientList.Where(x => x.IdSala == idSala).ToList();
 
             //select * from Client
             //foreach(var itemDb in list)
@@ -35,6 +35,8 @@ namespace Gym2.Controllers
             //        IdUtilizator=itemDb.IdUtilizator
             //    });
             //}
+
+            var test = Db.AbonamentList.ToList();
 
             model.ClientItems.Add(new ClientiIndexModel.ClientItem()
             {
