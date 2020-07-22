@@ -16,7 +16,7 @@ namespace Library
         {
 
             //  Database.SetInitializer<DbContext>(null);
-            System.Data.Entity.Database.SetInitializer<Database>(null);
+           // System.Data.Entity.Database.SetInitializer<Database>(null);
         }
 
         public class MyMigration : DbMigrationsConfiguration<DbContext>

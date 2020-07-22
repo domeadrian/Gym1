@@ -1,0 +1,78 @@
+﻿@model ClientEditViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<!--<h2>Edit</h2>-->
+
+
+<h1>Edit Page</h1>
+
+
+
+    
+
+    @Html.HiddenFor(x=>x.IdClient)
+
+
+    <label for="name">Nume:</label>
+    <input type="text" id="" class="input-nume" name=" " value="@Model.Nume"><br><br>    <span class="btn btn-success btn-nume" >btn nume</span>
+    
+    <p class="p-info-nume"> </p>
+    
+    <label for="pwd">Parola:</label>
+    <input type="password" id="pwd" name="pwd" minlength="8"><br><br>
+    <p>La ce sala obisnuiti sa mergeti?</p>
+    <input type="checkbox" id="sala1" name="sala1" value="sala1">
+    <label for="sala1"> Merg la sala 1</label><br>
+    <input type="checkbox" id="sala2" name="sala2" value="sala2">
+    <label for="sala2">  Merg la sala 2</label><br>
+    <input type="checkbox" id="sala3" name="sala3" value="sala3">
+    <label for="sala3">  Merg la sala 3</label><br><br>
+    <p>Aveti abonament?</p>
+    <input type="radio" id="abonament" name="abonament" value="Da">
+    <label for="abonament">Da</label><br>
+    <input type="radio" id="abonament" name="abonament" value="Nu">
+    <label for="abonament">Nu</label><br>
+    <input type="radio" id="abonament" name="abonament" value="Nu, dar doresc sa-mi fac">
+    <label for="abonament">Nu, dar doresc sa-mi fac</label>
+
+    <!-- <input type="submit" value="Edit Client">-->
+    <!---->
+    @using (Html.BeginForm("Edit", "Clienti", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+
+        <div>
+            @Html.TextBoxFor(model => model.Nume, new { placeholder = "Nume" })
+
+        </div>
+        <div>
+            @Html.TextBoxFor(model => model.IdSala, new { placeholder = "IdSala" })
+
+        </div>
+        <div>
+            <label for="CheckBox">Aveti abonament?</label>
+            @Html.CheckBox("Aveti abonament?", true)
+
+        </div>
+        <p>Care este genul dumneavoastra?</p>
+        <label for="RadioButton">Masculin</label>
+        @Html.RadioButton("Gender", "Male")
+        <label for="RadioButton">Feminin</label>
+        @Html.RadioButton("Gender", "Female")
+        <div>
+            <p>Enter Password:</p>
+            @Html.Password("OnlinePassword")
+        </div>
+        <button class="btn btn-success" type="submit">Edit Client</button>
+    }
+
+
+
+
+
+
+
+@section Scripts {
+    <script src="~/Assets/gym/views/clienti/edit.js"></script>
+}

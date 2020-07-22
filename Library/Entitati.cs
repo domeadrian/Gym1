@@ -14,13 +14,13 @@ namespace Library
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int IdClient { get; set; }
         public string Nume { get; set; }
         public string Prenume { get; set; }
 
         public int IdSala { get; set; }
-        public int? IdUtilizator { get; set; }
-        public bool Sters { get; set; }
+        public string IdUtilizator { get; set; }
+        public bool? Sters { get; set; }
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         //public DateTime DataCreare { get; set; }
 

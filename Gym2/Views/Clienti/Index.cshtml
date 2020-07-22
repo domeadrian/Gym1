@@ -10,28 +10,38 @@ Lista de clienti
 
 
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">IdClient</th>
-                <th scope="col">Nume</th>
-                <th scope="col">Prenume</th>
-                <th scope="col">IdUtilizator</th>
-                <th scope="col">IdSala</th>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">IdClient</th>
+            <th scope="col">Nume</th>
+            <th scope="col">Prenume</th>
+            <th scope="col">IdUtilizator</th>
+            <th scope="col">IdSala</th>
+            <th scope="col">Actiuni</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.ClientItems)
+        {
+         
+            <tr style="@(item.AreAbonamentCurent?"background-color: greenyellow;":"")">
+                <th scope="row">@item.IdClient
+                @*@if (item.AreAbonamentCurent)
+                {
+                    <span>abonament</span>
+                }*@
+                </th>
+                <td>@item.Nume</td>
+                <td>@item.Prenume</td>
+                <td>@item.IdUtilizator</td>
+                <td> @item.IdSala</td>
+
+                <td><a href="/Clienti/Edit?Id=@item.IdClient"> Edit </a></td>
             </tr>
-        </thead>
-        <tbody>
-            
-                @foreach (var item in Model.ClientItems)
-                {<tr>
-    <th scope="row">@item.IdClient</th>
-    <td>@item.Nume</td>
-    <td>@item.Prenume</td>
-    <td>@item.IdUtilizator</td>
-    <td > @item.IdSala</td>
-</tr>
-                }
-            
-        </tbody>
-    </table>
+        }
+
+    </tbody>
+</table>
 

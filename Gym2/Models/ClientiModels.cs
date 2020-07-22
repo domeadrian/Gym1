@@ -14,9 +14,26 @@ namespace Gym2.Models
             public string Nume { get; set; }
             public string Prenume { get; set; }
             public int IdClient { get; set; }
-            public int IdUtilizator { get; set; }
+            public string IdUtilizator { get; set; }
             public int IdSala { get; set; }
+
+            public bool AreAbonamentCurent { get; set; }
 
         }
     }
+
+    public class ClientEditViewModel
+    {
+        public string Nume { get; set; }
+        public string Prenume { get; set; }
+        public int IdClient { get; set; }
+        public string IdUtilizator { get; set; }
+        public int IdSala { get; set; }
+
+
+    }
+
 }
+
+
+
