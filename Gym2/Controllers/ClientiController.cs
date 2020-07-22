@@ -23,7 +23,7 @@ namespace Gym2.Controllers
 
             //citire din bd
 
-            var list = Db.ClientList.Include(x=>x.AbonamentList).Where(x => x.Sters == null || x.Sters == false).ToList();
+            var list = Db.ClientList.Include(x => x.AbonamentList).Where(x => x.Sters == null || x.Sters == false).ToList();
 
             foreach (var itemDb in list)
             {
@@ -40,35 +40,50 @@ namespace Gym2.Controllers
 
             return View(model);
         }
-       
+
         [HttpGet]
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Edit(int? id)
         {
+            var model = new ClientEditViewModel();           
+            if (id != null)
+            {
+                model.Titlu = "Editeaza client";
 
-            Client clientDb = await Db.ClientList.FirstOrDefaultAsync(x => x.IdClient == id);
-
-            var model = new ClientEditViewModel();
-            model.IdClient = id;
-            model.Nume = clientDb.Nume;
-            model.IdUtilizator = clientDb.IdUtilizator;
-            model.Prenume = clientDb.Prenume;
-
-            //
+                Client clientDb = await Db.ClientList.FirstOrDefaultAsync(x => x.IdClient == id.Value);
+                model.IdClient = id.Value;
+                model.Nume = clientDb.Nume;
+                model.IdUtilizator = clientDb.IdUtilizator;
+                model.Prenume = clientDb.Prenume;
+            }
+            else
+            {
+                model.Titlu = "Adauga client";
+            }
 
             return View(model);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(ClientEditViewModel model)
         {
-            Client clientDb = await Db.ClientList.FirstOrDefaultAsync(x => x.IdClient == model.IdClient);
+            Client clientDb = null;
+            if (model.IdClient !=null)
+            {
+                clientDb = await Db.ClientList.FirstOrDefaultAsync(x => x.IdClient == model.IdClient);
+            }
+            else
+            {
+                clientDb = new Client();
+                Db.MarkAsAdded(clientDb);
+            }
 
+            clientDb.Nume = model.Nume;
+            clientDb.Prenume = model.Prenume;
+            await Db.SaveChangesAsync();
 
-            return null;
+            //var result = await UserManager.CreateAsync(client)
+            return RedirectToAction("Index");
         }
-
-
     }
 
 

@@ -22,15 +22,13 @@ namespace Gym2.Models
         }
     }
 
-    public class ClientEditViewModel
+    public class ClientEditViewModel : ModelBase
     {
         public string Nume { get; set; }
         public string Prenume { get; set; }
-        public int IdClient { get; set; }
+        public int? IdClient { get; set; }
         public string IdUtilizator { get; set; }
         public int IdSala { get; set; }
-
-
     }
 
 }

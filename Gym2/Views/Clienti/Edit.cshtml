@@ -6,21 +6,22 @@
 <!--<h2>Edit</h2>-->
 
 
-<h1>Edit Page</h1>
+<h1>
+    @Model.Titlu
+</h1>
 
 
 
-    
-
-    @Html.HiddenFor(x=>x.IdClient)
 
 
-    <label for="name">Nume:</label>
-    <input type="text" id="" class="input-nume" name=" " value="@Model.Nume"><br><br>    <span class="btn btn-success btn-nume" >btn nume</span>
-    
-    <p class="p-info-nume"> </p>
-    
-    <label for="pwd">Parola:</label>
+@*<label for="name">Nume:</label>
+    <input type="text" id="" class="input-nume" name=" " value="@Model.Nume">
+    <br>
+    <br>    <span class="btn btn-success btn-nume">btn nume</span>
+
+    <p class="p-info-nume"> </p>*@
+
+@*<label for="pwd">Parola:</label>
     <input type="password" id="pwd" name="pwd" minlength="8"><br><br>
     <p>La ce sala obisnuiti sa mergeti?</p>
     <input type="checkbox" id="sala1" name="sala1" value="sala1">
@@ -35,42 +36,26 @@
     <input type="radio" id="abonament" name="abonament" value="Nu">
     <label for="abonament">Nu</label><br>
     <input type="radio" id="abonament" name="abonament" value="Nu, dar doresc sa-mi fac">
-    <label for="abonament">Nu, dar doresc sa-mi fac</label>
+    <label for="abonament">Nu, dar doresc sa-mi fac</label>*@
 
-    <!-- <input type="submit" value="Edit Client">-->
-    <!---->
-    @using (Html.BeginForm("Edit", "Clienti", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
+<!-- <input type="submit" value="Edit Client">-->
+<!---->
+@using (Html.BeginForm("Edit", "Clienti", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
 
-        <div>
-            @Html.TextBoxFor(model => model.Nume, new { placeholder = "Nume" })
+    @Html.HiddenFor(x => x.IdClient)
 
-        </div>
-        <div>
-            @Html.TextBoxFor(model => model.IdSala, new { placeholder = "IdSala" })
-
-        </div>
-        <div>
-            <label for="CheckBox">Aveti abonament?</label>
-            @Html.CheckBox("Aveti abonament?", true)
-
-        </div>
-        <p>Care este genul dumneavoastra?</p>
-        <label for="RadioButton">Masculin</label>
-        @Html.RadioButton("Gender", "Male")
-        <label for="RadioButton">Feminin</label>
-        @Html.RadioButton("Gender", "Female")
-        <div>
-            <p>Enter Password:</p>
-            @Html.Password("OnlinePassword")
-        </div>
-        <button class="btn btn-success" type="submit">Edit Client</button>
-    }
-
-
-
-
-
+    <div>
+     <label>Nume</label>   @Html.TextBoxFor(model => model.Nume, new { placeholder = "Nume", @class = "form-control" })
+    </div>
+    <br />
+    <div>
+        <label>Prenume</label>
+        @Html.TextBoxFor(model => model.Prenume, new { placeholder = "Prenume", @class = "form-control" })
+    </div>
+    <br />
+    <button class="btn btn-success" type="submit">Salveaza</button>
+}
 
 
 @section Scripts {
